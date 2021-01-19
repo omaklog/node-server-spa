@@ -1,24 +1,23 @@
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/**
+     Text titles
+ */
+.main-bar__title {
+  color: #ddd;
 }
-h1, h2 {
-  font-weight: normal;
-  color: red;
+.main-bar__subtitle {
+  color: #6ed5a5;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+/**
+     Text titles
+ */
+.login-form[data-v-260d49e0] {
+  background-color: #070a11;
+  height: 100%;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.login-form__container[data-v-260d49e0] {
+  border: 1px #ffffffc7 solid;
+  padding: 36px;
+  color: #40524a;
+  background-color: #b4dac5eb;
+  border-radius: 10px;
 }
-a {
-  color: #42b983;
-}
-

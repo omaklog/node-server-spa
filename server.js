@@ -4,6 +4,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 
 const server = express();
 const config = require('./webpack.config.js');
+require('./data-base-config.js');
 const compiler = webpack(config);
 
 server.use(
@@ -21,15 +22,10 @@ const passport = require('passport');
 const path = require('path');
 const session = require('express-session');
 
-const sqlite3 = require('sqlite3').verbose();
 
-const db = new sqlite3.Database(':memory:');
-
-
-// require('./config/passport')(passport);
+ require('./src/config/passport')(passport);
 
 server.set('port', process.env.PORT || 3000);
-console.log("--->"+path.join(__dirname,'public'));
 server.use(express.static(path.join(__dirname,'public')));
 server.set('views',path.join(__dirname,'src/views'))
 server.set('view engine', 'ejs');

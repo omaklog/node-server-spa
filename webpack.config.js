@@ -20,16 +20,24 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
+          'style-loader',
           'css-loader'
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.s(c|a)ss$/,
         use: [
            MiniCSSExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
+             {
+                  loader: 'sass-loader',
+                  options: {
+                       implementation: require('sass'),
+                       sassOptions: {
+                            indentedSyntax: true // optional
+                       },
+                  },
+             },
         ],
       },
       {
@@ -68,7 +76,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+      test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
