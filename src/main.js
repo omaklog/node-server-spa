@@ -9,12 +9,19 @@ import vuetify from '../src/plugins/vuetify';
 import MainBarComponent from './components/MainBarComponent'
 import LoginFormComponent from './components/LoginFormComponent'
 import ListSoftComponent from './components/home/ListSoftComponent'
+import CreditosGupalesComponent from './components/credgrup/CreditosGrupalesComponent'
+import InspeccionarComponent from './components/inspeccionar/InspeccionarComponent'
+import ControlCambiosComponent from './components/cambios/ControlCambiosComponent'
 
 import 'toastr/build/toastr.css'
 
 const routes = [
+     { path: '/', component: ListSoftComponent },
      { path: '/login', component: LoginFormComponent },
-     { path: '/', component: ListSoftComponent }
+     { path: '/home', component: CreditosGupalesComponent },
+     { path: '/creditos', component: CreditosGupalesComponent },
+     { path: '/creditos/inspeccionar', component: InspeccionarComponent },
+     { path: '/creditos/inspeccionar/cambios', component: ControlCambiosComponent },
 ]
 
 const router = new VueRouter({
@@ -32,26 +39,19 @@ new Vue({
      components:{
           MainBarComponent,
           LoginFormComponent,
-          ListSoftComponent
+          ListSoftComponent,
+          CreditosGupalesComponent,
+          InspeccionarComponent,
+          ControlCambiosComponent
      },
 
      data:()=>({
           items: [
                {
-                    text: 'Dashboard',
+                    text: 'Home',
                     disabled: false,
-                    href: 'breadcrumbs_dashboard',
-               },
-               {
-                    text: 'Link 1',
-                    disabled: false,
-                    href: 'breadcrumbs_link_1',
-               },
-               {
-                    text: 'Link 2',
-                    disabled: true,
-                    href: 'breadcrumbs_link_2',
-               },
+                    href: 'home',
+               }
           ],
      })
 

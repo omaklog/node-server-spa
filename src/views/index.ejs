@@ -3,21 +3,30 @@
 <head>
     <meta charset="utf-8">
     <title>login-test</title>
-    <link rel="stylesheet" href="main.css"/>
-    <link rel="stylesheet" href="styles.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"/>
+    <link rel="stylesheet" href="<%- locals.path -%>/main.css"/>
+    <link rel="stylesheet" href="<%- locals.path -%>/styles.css"/>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
 <div id="app">
     <v-app>
         <v-main class="back-dark">
-            <main-bar-component :user="'<%- locals.user.email -%>'" ></main-bar-component>
-            <v-breadcrumbs  class="main-routes" dark :items="items"></v-breadcrumbs>
+            <main-bar-component :user="'<%- locals.user.nombre -%>'" ></main-bar-component>
+            <v-breadcrumbs  class="main-routes" dark :items="items">
+                <template v-slot:item="{ item }">
+                    <v-breadcrumbs-item
+                            :href="item.href"
+                            :class="item.disabled ? '':'breadcrumb-white'"
+                            :disabled="item.disabled">{{ item.text}}
+                    </v-breadcrumbs-item>
+                </template>
+            </v-breadcrumbs>
             <router-view></router-view>
         </v-main>
     </v-app>
 </div>
 <script src="/appBuild.js"></script>
+
+
 </body>
 </html>

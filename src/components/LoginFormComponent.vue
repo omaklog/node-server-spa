@@ -76,7 +76,7 @@
                          window.location.pathname = "/"
                    }).catch(error => {
                         toastr.error("Usuario o password incorrecto")
-                   });;
+                   });
               }
          }
     }

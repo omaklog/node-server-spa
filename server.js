@@ -50,6 +50,6 @@ require('./src/server/routes/routes')(server,passport);
 
 
 server.listen(server.get('port'), ()=>{
-   console.log(`server runing on port ${server.get('port')}`);
+     console.log(`Server running at http://localhost:${server.get('port')}/`);
 });
 

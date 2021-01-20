@@ -11,11 +11,15 @@ new MiniCSSExtractPlugin({
 module.exports = {
   entry: './src/main.js',
   mode: 'development',
+  devServer: {
+     open: true,
+     port: 3000
+ },
   output: {
     path: path.resolve(__dirname, './public'),
     filename: 'appBuild.js'
   },
-  module: {
+     module: {
     rules: [
       {
         test: /\.css$/,

@@ -4,5 +4,26 @@ body{
 }
 
 .back-dark{
-     background-color: #070a11;
+     background-color: #070a11 !important;
+}
+
+.l-green--text{
+     color: #6ed5a5;
+}
+
+table {
+     border-collapse: separate;
+     border-spacing: 0px 6px !important;
+}
+
+
+td:last-child  { border-radius: 0px 10px 10px 0px; }
+td:first-child { border-radius: 10px 0px 0px 10px; }
+
+.breadcrumb-white a{
+     color: #dddddd !important;
+}
+
+.breadcrumbs__active{
+     color: grey !important;
 }

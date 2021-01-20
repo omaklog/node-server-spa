@@ -1,10 +1,11 @@
 # login-test
 
-> Vue.js project simple,
+> Vue.js project simple login,
+> Vuetify,
+> Node and express.js,
 
 ## Build Setup
 
-``` bash
 # install dependencies
 npm install
 

@@ -2,35 +2,35 @@
      <v-card
           class="mx-auto mt-16 back-dark list-soft"
           max-width="1200"
-          dark
+          elevation="0"
      >
-          <v-list>
-               <v-list-item-group
-                    v-model="model"
-                    color="#6ed5a5"
-               >
-                    <v-list-item
-                         color="#b4dac5"
-                         v-for="(item, i) in items"
-                         :key="i"
-                         class="mt-5 list-soft__item"
-                    >
-                         <v-btn
-                              class="ma-2 list-soft__btn "
-                              outlined
-                              max-width="25"
-                              color="#6ed5a5"
-                         >
-                              <strong class="text-h6 font-weight-bold list-soft__label ">{{i}}</strong>
-                         </v-btn>
+          <v-container>
+               <v-row>
+                    <v-icon large color="#6ed5a5">mdi-format-list-bulleted</v-icon>
+                    <h2 class="white--text ml-2 mt-2">Listado de Softwares</h2>
+                    <v-divider></v-divider>
+                    <v-btn class="ma-2" id="btn-plus" outlined color="#6ed5a5">
+                         <v-icon right dark>mdi-plus</v-icon>
+                         <label for="btn-plus" class="white--text ml-2">AGREGAR NUEVO</label>
+                    </v-btn>
+               </v-row>
+          </v-container>
+
+
+          <hr>
+          <v-list class="back-dark text-white">
+               <v-list-item-group v-model="model">
+                    <v-list-item v-for="(item, i) in items" :key="i" class="mt-5 list-soft__item text--white" @click="goToCredito">
+                         <number-list :valor="i" class="mr-3"></number-list>
                          <v-list-item-content>
-                              <v-list-item-title class="text-h6 " v-text="item.text"></v-list-item-title>
+                              <v-list-item-title class="text-h6 list-soft__label" v-text="item.name"></v-list-item-title>
+                         </v-list-item-content>
+                         <v-list-item-content>
+                              <v-list-item-title class="grey--text">Crédito Grupal</v-list-item-title>
                          </v-list-item-content>
                          <v-list-item-icon>
-                              <v-icon>mdi-chevron-right</v-icon>
+                              <v-icon  class="grey--text">mdi-chevron-right</v-icon>
                          </v-list-item-icon>
-
-
                     </v-list-item>
                </v-list-item-group>
           </v-list>
@@ -38,26 +38,47 @@
 </template>
 
 <script>
+    import axios from "axios";
+    import toastr from "toastr";
+
+    import NumberList from '../resource/NumberListComponent'
+
     export default {
-        name: "ListSoftComponent",
+
+         name: "ListSoftComponent",
+
+         components:{
+              NumberList
+         },
 
          data: () => ({
-              items: [
-                   {
-                        icon: 'mdi-wifi',
-                        text: 'Wifi',
-                   },
-                   {
-                        icon: 'mdi-bluetooth',
-                        text: 'Bluetooth',
-                   },
-                   {
-                        icon: 'mdi-chart-donut',
-                        text: 'Data Usage',
-                   },
-              ],
-              model: [1],
+              items: [],
+              model: [1]
          }),
+
+         created() {
+             this.getList();
+         },
+
+         methods:{
+
+             getList(){
+                  axios.get("https://reqres.in/api/unknown")
+                       .then((response)=>{
+                              if(response.status === 200){
+                                   this.items = response.data.data;
+                              }else {
+                                   toastr.error("Data no disponible");
+                              }
+                       }).catch(error => {
+                       toastr.error("Data no disponible");
+                  });
+             },
+
+             goToCredito(){
+                  this.$router.push('/creditos')
+             }
+         }
     }
 </script>
 
@@ -67,7 +88,6 @@
      .list-soft{
 
           &__item{
-               margin: 15px;
                border-radius: 8px;
                background-color: $grey-background;
           }

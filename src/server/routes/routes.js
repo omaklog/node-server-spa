@@ -3,11 +3,10 @@ const path = require('path');
 module.exports = (app, passport) =>{
 
      app.use(function (req, res, next) {
-          console.log("----------------->"+JSON.stringify(req.user));
-          if(req.user != undefined)
+          if(req.user != undefined){
                res.locals.user = req.user
+          }
           else res.locals.user = { email:'login' }
-          console.log("----------------->"+JSON.stringify(res.locals.user));
           next()
      })
 
@@ -34,9 +33,20 @@ module.exports = (app, passport) =>{
      });
 
      app.get('/home', isLoggedIn, (req, res) => {
-          req.logout();
-          res.redirect('/');
+          res.render('index');
      });
+
+     app.get('/creditos', isLoggedIn, (req, res) => {
+          res.render('index');
+     });
+
+          app.get('/creditos/inspeccionar', isLoggedIn, (req, res) => {
+               res.render('index');
+          });
+
+               app.get('/creditos/inspeccionar/cambios', isLoggedIn, (req, res) => {
+                    res.render('index');
+               });
 
      function isLoggedIn (req, res, next) {
           if(req.isAuthenticated() && req.route.path ==='/login'){

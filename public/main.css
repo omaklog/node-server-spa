@@ -43,7 +43,6 @@
      Text titles
  */
 .list-soft__item[data-v-f277b396] {
-  margin: 15px;
   border-radius: 8px;
   background-color: #171925;
 }
@@ -53,4 +52,46 @@
 }
 .list-soft__label[data-v-f277b396] {
   color: white;
+}
+/**
+     colors
+ */
+/**
+     Backgrounds
+ */
+/**
+     Text titles
+ */
+.creditos__card[data-v-a90e3314] {
+  border-radius: 8px;
+  background-color: #171925;
+  height: 60px;
+}
+/**
+     colors
+ */
+/**
+     Backgrounds
+ */
+/**
+     Text titles
+ */
+.creditos__card[data-v-d957d984] {
+  border-radius: 8px;
+  background-color: #171925;
+  height: 60px;
+}
+/**
+     colors
+ */
+/**
+     Backgrounds
+ */
+/**
+     Text titles
+ */
+.creditos__card[data-v-1b11870b] {
+  border-radius: 8px;
+  background-color: #171925;
+  height: 60px;
 }

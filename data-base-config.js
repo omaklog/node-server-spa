@@ -13,9 +13,9 @@
 
           const sql_create = `CREATE TABLE IF NOT EXISTS Users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name VARCHAR(100) NOT NULL,
             email VARCHAR(100) NOT NULL,
-            password VARCHAR(100) NOT NULL
+            password VARCHAR(100) NOT NULL,
+            nombre VARCHAR(100) NOT NULL
           );`;
 
           db.run(sql_create, err => {
@@ -28,9 +28,9 @@
 
           const bcrypt  = require ('bcrypt-nodejs');
 
-          const sql_create_default_users =`INSERT INTO Users (id, name, email, password) VALUES
-          (1, 'Miguel Mencía', 'adminuser@mobilender.com', '${bcrypt.hashSync('notsecret', bcrypt.genSaltSync(8), null)}'),
-          (2, 'Ricardo Santos', 'defaultuser@mobilender.com', '${bcrypt.hashSync('notsecret', bcrypt.genSaltSync(8),null)}');`
+          const sql_create_default_users =`INSERT INTO Users (id, email, password, nombre) VALUES
+          (1, 'adminuser@mobilender.com', '${bcrypt.hashSync('notsecret', bcrypt.genSaltSync(8), null)}', 'Miguel Mencía'),
+          (2,  'defaultuser@mobilender.com', '${bcrypt.hashSync('notsecret', bcrypt.genSaltSync(8),null)}','Ricardo Santos');`
 
           db.run(sql_create_default_users, err => {
                if (err) {

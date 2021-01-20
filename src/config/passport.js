@@ -26,7 +26,7 @@ module.exports = function (passport) {
      },function(req, email, password, done) {
 
 
-          db.get('SELECT password, id, email FROM Users WHERE email = ?', email, function(err, user) {
+          db.get('SELECT  password, id, email, nombre  FROM Users WHERE email = ?', email, function(err, user) {
                if (!user) return done(null, false, 'Usuario o password incorrectos');
                var hash = bcrypt.compareSync(password, user.password)
 
@@ -41,12 +41,11 @@ module.exports = function (passport) {
      }));
 
      passport.serializeUser(function(user, done) {
-          console.log(""+user.id+"...>"+done)
           return done(null, user.id);
      });
 
      passport.deserializeUser(function(id, done) {
-          db.get('SELECT id, email FROM Users WHERE id = ?', id, function(err, user) {
+          db.get('SELECT id, email, nombre FROM Users WHERE id = ?', id, function(err, user) {
                if (!user) return done(null, false);
                return done(null, user);
           });
