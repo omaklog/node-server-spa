@@ -11,11 +11,11 @@
 <body>
 <div id="app">
     <v-app>
-        <v-main>
-            <main-bar-component></main-bar-component>
+        <v-main class="back-dark">
+            <main-bar-component :user="'<%- locals.user.email -%>'" ></main-bar-component>
+            <v-breadcrumbs  class="main-routes" dark :items="items"></v-breadcrumbs>
             <router-view></router-view>
         </v-main>
-
     </v-app>
 </div>
 <script src="/appBuild.js"></script>

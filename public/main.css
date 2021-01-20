@@ -1,4 +1,10 @@
 /**
+     colors
+ */
+/**
+     Backgrounds
+ */
+/**
      Text titles
  */
 .main-bar__title {
@@ -7,6 +13,12 @@
 .main-bar__subtitle {
   color: #6ed5a5;
 }
+/**
+     colors
+ */
+/**
+     Backgrounds
+ */
 /**
      Text titles
  */
@@ -20,4 +32,25 @@
   color: #40524a;
   background-color: #b4dac5eb;
   border-radius: 10px;
+}
+/**
+     colors
+ */
+/**
+     Backgrounds
+ */
+/**
+     Text titles
+ */
+.list-soft__item[data-v-f277b396] {
+  margin: 15px;
+  border-radius: 8px;
+  background-color: #171925;
+}
+.list-soft__btn[data-v-f277b396] {
+  padding: 0px 6px !important;
+  border: 3px solid !important;
+}
+.list-soft__label[data-v-f277b396] {
+  color: white;
 }

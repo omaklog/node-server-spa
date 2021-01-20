@@ -70,9 +70,13 @@
 
          methods: {
               login(){
-                   axios.post("/post-test",{email:this.email, password:this.password}).then((response)=>{
-                         console.info("response"+JSON.stringify(response))
-                   });
+                   const data = JSON.stringify({email:this.email, password:this.password});
+                   axios.post("/login", data ,{ headers: { "content-type": "application/json"}})
+                        .then((response)=>{
+                         window.location.pathname = "/"
+                   }).catch(error => {
+                        toastr.error("Usuario o password incorrecto")
+                   });;
               }
          }
     }

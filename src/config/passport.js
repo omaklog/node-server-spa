@@ -25,14 +25,16 @@ module.exports = function (passport) {
           passReqToCallback: true
      },function(req, email, password, done) {
 
-          console.log("email-<"+email+" password"+password)
 
           db.get('SELECT password, id, email FROM Users WHERE email = ?', email, function(err, user) {
                if (!user) return done(null, false, 'Usuario o password incorrectos');
                var hash = bcrypt.compareSync(password, user.password)
 
                if (!hash) return done(null, false, 'Usuario o password incorrectos');
-               return done(null, user);
+               else{
+                    delete user.password
+                    return done(null, user);
+               }
 
           });
 

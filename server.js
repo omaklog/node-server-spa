@@ -32,7 +32,8 @@ server.set('view engine', 'ejs');
 
 server.use(morgan('dev'));
 server.use(cookieParser());
-server.use(bodyParse.urlencoded({extended: false}));
+server.use(bodyParse.json());
+server.use(bodyParse.urlencoded({extended: true}));
 
 server.use(session({
    secret: 'juntechnicaltest',
@@ -43,6 +44,7 @@ server.use(session({
 server.use(passport.initialize());
 server.use(passport.session());
 server.use(flash());
+
 
 require('./src/server/routes/routes')(server,passport);
 

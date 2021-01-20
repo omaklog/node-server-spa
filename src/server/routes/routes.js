@@ -2,45 +2,33 @@ const path = require('path');
 
 module.exports = (app, passport) =>{
 
+     app.use(function (req, res, next) {
+          console.log("----------------->"+JSON.stringify(req.user));
+          if(req.user != undefined)
+               res.locals.user = req.user
+          else res.locals.user = { email:'login' }
+          console.log("----------------->"+JSON.stringify(res.locals.user));
+          next()
+     })
+
      app.get('/', isLoggedIn, (req, res) => {
-          res.render('index');
+          res.render('index', {getInfo: true});
      });
 
      app.get('/login', isLoggedIn, (req, res) => {
           res.render('index');
      });
 
-     // app.post('/login', passport.authenticate('local-login',{
-     //      usernameField: 'email',
-     //      passwordField: 'password'
-     // }), (req, res) =>{
-     //      console.log(JSON.stringify(req.user));
-     //           res.send({success:true, message:'user logged'})
-     // });
-
-     app.post('/post-test', (req, res) => {
-          console.log('Got body:', req.headers);
-          console.log('Got body:', req.get('password'));
-          res.sendStatus(200);
-     });
-
-     app.post('/login',function(req, res, next) {
-          passport.authenticate('local-login',(req,user,info)=>{
-               console.log(req);
-               console.log(user);
-                console.log(`req.session.passport: ${JSON.stringify(req.session.passport)}`)
-               req.logIn(user,function(err){
-                    if(err) return next(err);
-                    console.log('Dentro del req.login() callback')
-                    console.log('User', user);
-
-               })
-
-          })(req, res, next);
+     app.post('/login', passport.authenticate('local-login',{
+          usernameField: 'email',
+          passwordField: 'password'
+     }), (req, res, info) =>{
+          if(req.user) res.send({success:true, message:"usuario logueado"});
+          else res.send({success:true, message:info})
      });
 
 
-     app.post('/logout', (req, res) => {
+     app.get('/logout', (req, res) => {
           req.logout();
           res.redirect('/');
      });
@@ -51,13 +39,12 @@ module.exports = (app, passport) =>{
      });
 
      function isLoggedIn (req, res, next) {
-          if (req.isAuthenticated()) {
-               return next();
-          }
-          if(req.route.path ==='/login'){
-               res.render('index');
-          }else{
+          if(req.isAuthenticated() && req.route.path ==='/login'){
+               res.redirect('/');
+          }else if(!req.isAuthenticated() && req.route.path !='/login'){
                res.redirect('/login');
+          }else{
+               return next();
           }
 
      }
