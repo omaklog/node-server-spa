@@ -1,24 +1,29 @@
-# login-test
+# Login Test to Mobilender
 
-> Vue.js project simple login,
-> Vuetify,
-> Node and express.js,
-
-## Build Setup
-
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run server
-  -- open browser in http://localhost:3000
-    user and password by default
-        email: adminuser@mobilender.com,
-        password: notsecret
+<img src="https://nodejs.org/static/images/logo.svg" height="100" alt="N|Solid">
 
 
-# build for production with minification
-Todo config script for production
-```
+(https://nodejs.org/es)
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+  - Back ( Node.js, Express.js, passport.js, sqlite)
+  - Front ( Vue.js, Vuetify.js, Vue-Ruter.js)
+  - Config:- Webpack
+  - Repo: https://github.com/omaklog/node-server-spa.git
+  - Branch: login-test
+
+
+# Descripcion!
+
+  - Prueba técnica: Login con persistencia de sesión, y diferentes vistas realizadas en base a documento enviado.
+
+### Installation
+
+Se require de [Node.js](https://nodejs.org/) v10+ .
+
+Instalar las dependencias y dependencias de desarrollo para iniciar el servidor
+
+```sh
+$ cd login-test o nombre de la carpeta seleccionado al descomprimir el fichero
+$ npm install      para instalar las dependencias.
+$ npm run server   ... Esperar a que termine de correr el servidor
+Abrir navegador en: http://localhost:3000
