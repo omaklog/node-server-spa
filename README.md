@@ -11,6 +11,11 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run server
+  -- open browser in http://localhost:3000
+    user and password by default
+        email: adminuser@mobilender.com,
+        password: notsecret
+
 
 # build for production with minification
 Todo config script for production
