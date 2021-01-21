@@ -65,7 +65,7 @@
                     {
                          text: 'Home',
                          disabled: false,
-                         href: 'home',
+                         href: '../home',
                     },
                     {
                          text: 'Buscar créditos grupales',

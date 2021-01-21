@@ -12,7 +12,8 @@
     <v-app>
         <v-main class="back-dark">
             <main-bar-component :user="'<%- locals.user.nombre -%>'" ></main-bar-component>
-            <v-breadcrumbs  class="main-routes" dark :items="items">
+            <%if(locals.user.email != 'login') {%>
+            <v-breadcrumbs  class="main-routes" dark :items="items" >
                 <template v-slot:item="{ item }">
                     <v-breadcrumbs-item
                             :href="item.href"
@@ -21,6 +22,7 @@
                     </v-breadcrumbs-item>
                 </template>
             </v-breadcrumbs>
+            <% } %>
             <router-view></router-view>
         </v-main>
     </v-app>

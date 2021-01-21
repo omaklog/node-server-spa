@@ -9,7 +9,7 @@
                     <v-icon large color="#6ed5a5">mdi-format-list-bulleted</v-icon>
                     <h2 class="white--text ml-2 mt-2">Listado de Softwares</h2>
                     <v-divider></v-divider>
-                    <v-btn class="ma-2" id="btn-plus" outlined color="#6ed5a5">
+                    <v-btn class="ma-2" id="btn-plus" outlined color="#6ed5a5" @click="goToHome">
                          <v-icon right dark>mdi-plus</v-icon>
                          <label for="btn-plus" class="white--text ml-2">AGREGAR NUEVO</label>
                     </v-btn>
@@ -58,6 +58,18 @@
 
          created() {
              this.getList();
+              this.$root.$data.items = [
+                   {
+                        text: 'Home',
+                        disabled: false,
+                        href: 'home',
+                   },
+                   {
+                        text: 'Listado de softwares',
+                        disabled: true,
+                        href: '../../home',
+                   }
+              ]
          },
 
          methods:{
@@ -77,7 +89,12 @@
 
              goToCredito(){
                   this.$router.push('/creditos')
-             }
+             },
+
+              goToHome(){
+                   this.$router.push('/home')
+              },
+
          }
     }
 </script>

@@ -9,8 +9,8 @@
                  <v-col cols="9" md="6" sm="6">
                       <v-spacer></v-spacer>
 
-                      <div  v-if="user != 'login'" class="text-right">
-                           <strong class="text--success mt-3 mr-1 hidden-sm-and-down">{{user != 'login' ? user : ''}}</strong>
+                      <div  v-if="user != ''" class="text-right">
+                           <strong class="text--success mt-3 mr-1 hidden-sm-and-down">{{user != '' ? user : ''}}</strong>
                            <v-avatar size="36px">
                                 <img alt="Avatar" src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460">
                            </v-avatar>

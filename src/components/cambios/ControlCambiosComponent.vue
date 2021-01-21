@@ -8,7 +8,7 @@
                     <v-icon right dark class="green--text">mdi-magnify</v-icon>
                     <h2 class="white--text ml-2 mt-2">Control de cambios</h2>
                     <v-divider></v-divider>
-                    <v-btn class="ma-2" id="btn-plus" outlined color="#6ed5a5">
+                    <v-btn class="ma-2" id="btn-plus" outlined color="#6ed5a5" @click="goToRoot">
                          <v-icon right dark>mdi-magnify</v-icon>
                          <label for="btn-plus" class="white--text ml-2">Inspeccionar</label>
                     </v-btn>
@@ -64,17 +64,17 @@
                     {
                          text: 'Home',
                          disabled: false,
-                         href: 'home',
+                         href: '../../home',
                     },
                     {
                          text: 'Buscar créditos grupales',
                          disabled: false,
-                         href: '../creditos',
+                         href: '../../creditos',
                     },
                     {
                          text: 'inspeccionar',
                          disabled: false,
-                         href: 'inspeccionar',
+                         href: '../inspeccionar',
                     },
                     {
                          text: 'Control de cambios',
@@ -87,6 +87,10 @@
           methods:{
                goToBack(){
                     this.$router.push('/creditos/inspeccionar')
+               },
+
+               goToRoot(){
+                    this.$router.push('/')
                },
 
                getList(){
